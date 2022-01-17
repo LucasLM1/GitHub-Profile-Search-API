@@ -9,4 +9,4 @@ const UserPicture = props => (
     </Container>
 );
 
-export default UserPicture; 
+export default UserPicture;
