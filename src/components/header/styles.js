@@ -13,7 +13,7 @@ export const HeaderSection = styled.header`
 export const HeaderTitle = styled.h1`
     margin: 0;
     padding: 15px 0;
-    color: #E5E5E5;
+    color: #fff;
     font-size: 30px;
     font-weight: 700;
     text-align: center;

@@ -32,7 +32,10 @@ const Header = () => {
     async function getUserData(){
         try{
             const response = await client.get(`/${searchValue}`);
+            const repos = await client.get(`/${searchValue}/repos`);
+
             ctx.setUserData(response.data)
+            ctx.setUserRepos(repos.data);
         }
         catch(err) {
             console.log(err);
