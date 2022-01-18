@@ -1,4 +1,7 @@
 import { FiSearch } from 'react-icons/fi';
+import { useState, useContext} from 'react';
+import client from '../../service/client';
+import { context } from '../../context';
 
 import {
     HeaderSection,
@@ -8,17 +11,46 @@ import {
     HeaderSearchButton
 } from './styles';
 
-const Header = () => (
-    <HeaderSection>
+const Header = () => {
+    const ctx = useContext(context);
+    const [searchValue, setSearchValue] = useState('');
+
+    // useEffect(() => {
+    //     (async function getUserData() {
+    //         try {
+    //             const response = await client.get(`/${props.username}`);
+    //             const repos = await client.get(`/${props.username}/repos`);
+ 
+    //             ctx.setUserData(response.data);
+    //             ctx.setUserRepos(repos.data);
+    //         } catch(err) {
+    //             console.log(err);
+    //         }
+    //     })()
+    // }, [props.username]);
+
+    async function getUserData(){
+        try{
+            const response = await client.get(`/${searchValue}`);
+            ctx.setUserData(response.data)
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+
+    return(
+        <HeaderSection>
         <HeaderTitle>Github Profile</HeaderTitle>
         <HeaderInputContainer>
-            <HeaderInput />
+            <HeaderInput type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)} />
             
-            <HeaderSearchButton>
+            <HeaderSearchButton onClick={getUserData}>
                 <FiSearch size={15} />
             </HeaderSearchButton>
         </HeaderInputContainer>
     </HeaderSection>
-);
+    );
+};
 
 export default Header;
