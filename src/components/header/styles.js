@@ -1,23 +1,30 @@
 import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
-    width: 400px;
+    width: 70%;
     height: 130px;
     background: rgba(255,255,255, .2);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     padding: 0;
+    @media (max-width: 825px) {
+        width: 70%;
+        height: 120px;
+    }
 `
 
 export const HeaderTitle = styled.h1`
     margin: 0;
     padding: 15px 0;
     color: #fff;
-    font-size: 30px;
+    font-size: 25pt;
     font-weight: 700;
     text-align: center;
     width: 100%;
+    @media (max-width: 445px) {
+        font-size: 15pt;
+    }
 `
 
 export const HeaderInputContainer = styled.div`
@@ -28,17 +35,20 @@ export const HeaderInputContainer = styled.div`
 `
 
 export const HeaderInput = styled.input`
-    width: 200px;
+    width: 85%;
     height: 30px;
-    border-radius: 15px;
+    border-radius: 20px;
     border: none;
     padding: 0 16px;
     color: #444;
     transition: .4s ease;
+    @media (max-width: 825px) {
+        width: 85%;
+    }
 
     &:focus {
         outline: none;
-        width: 220px;
+        width: 80%;
         transition: .4s ease;
     }
 `
